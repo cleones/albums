@@ -1,0 +1,37 @@
+{
+    root: true,
+    "env": {
+        "browser": true,
+        "es6": true,
+        node: true
+    },
+    "extends": "eslint:recommended",
+    "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly"
+    },
+    "parserOptions": {
+        "ecmaVersion": 2018,
+        "sourceType": "module"
+    },
+    "rules": {
+      'no-shadow': ['error', { allow: ['state'] }],
+      'no-extra-boolean-cast': 'error',
+      'no-else-return': 'error',
+      'no-multi-spaces': 'error',
+      'no-useless-return': 'error',
+      'eol-last': ['error', 'always'],
+      'comma-dangle': ['error', 'never'],
+      'keyword-spacing': ['error', { after: true }],
+      'space-before-blocks': 'error',
+      'brace-style': ['error', '1tbs', { allowSingleLine: true }],
+      quotes: [
+        'error',
+        'single'
+      ],
+    },
+    "globals": {
+      "use": true,
+      "module":true
+  }
+}
