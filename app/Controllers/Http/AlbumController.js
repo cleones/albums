@@ -48,6 +48,19 @@ class AlbumController {
   }
 
   /**
+   * Display a single songs of album.
+   * GET albums/:id/songs
+   *
+   * @param {object} ctx
+   * @param {Response} ctx.response
+   */
+  async songs({ params, response }) {
+    const album = await this.albumService.find(params.id);
+    const songs = await album.songs().fetch();
+    response.json(songs);
+  }
+
+  /**
    * Update album details.
    * PUT or PATCH albums/:id
    *

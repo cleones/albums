@@ -16,8 +16,13 @@
 const Route = use('Route');
 
 Route.get('/', () => ({ greeting: 'Hello world in JSON' }));
-Route.get('/albums', 'AlbumController.index');
-Route.get('/albums/:id', 'AlbumController.show');
-Route.put('/albums/:id', 'AlbumController.update');
-Route.delete('/albums/:id', 'AlbumController.destroy');
-Route.post('/albums', 'AlbumController.store');
+Route.post('/auth/register', 'AuthController.register');
+Route.post('/auth/login', 'AuthController.login');
+Route.get('/users', 'AuthController.listUser');
+
+Route.get('/albums', 'AlbumController.index').middleware('auth');
+Route.get('/albums/:id', 'AlbumController.show').middleware('auth');
+Route.get('/albums/:id/songs', 'AlbumController.songs').middleware('auth');
+Route.put('/albums/:id', 'AlbumController.update').middleware('auth');
+Route.delete('/albums/:id', 'AlbumController.destroy').middleware('auth');
+Route.post('/albums', 'AlbumController.store').middleware('auth');

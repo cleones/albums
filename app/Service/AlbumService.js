@@ -6,12 +6,16 @@ class AlbumService {
   }
 
   async all() {
-    const all = await this.model.all();
+    const all = await this.model
+      .query()
+      .with('songs')
+      .fetch();
     return all;
   }
 
   async find(id) {
-    const album = await this.model.find(id);
+    const album = await await this.model.find(id);
+    await album.load('songs');
     return album;
   }
 
